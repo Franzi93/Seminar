@@ -1,0 +1,31 @@
+3D-Space Game (100 Punkte erreichbar):
+    Must have für das Bestehen (50p):
+        Spielwelt mit mindestens einem Planeten. (10p)
+        UI System
+            Main Menu mit Lautstärkeregler (5p)	
+            In-Game UI (Lebensanzeige etc.) (5p)
+        Steuerung der Flugrichtung über Maus/Tastatur (10p)
+        Mindestens ein Rennen mit Checkpoints. (10p)
+        First Person/Third Person Camera switchable. (10p)
+
+    Optional:
+        Raumgefechte:
+            Gegen andere Spieler
+                Networking (30p)
+            Gegen KI
+                KI, die sich bewegt und den Spieler angreift (30p)
+                    KI, die den Spieler unterstützt (15p)
+            Ego-Shooter nach vorn schie?en
+                Mit Fadenkreuz (10p)
+            Waffentürme
+                die sich zum Ziel ausrichten (10p) Flugrichtung von Schussrichtung entkoppeln. Steuerung!
+                    mit begrenztem Bewegungsspielraum. Nicht durch das eigene Schiff schießen. (10p)
+            Zielsuchende Geschosse (10p)
+        Verschiedene Waffen
+            Waffenwechsel mit Knopfdruck (10p)
+        Shop/Inventarsystem (20p)
+        Upgradesysten (20p)
+        Asteroidenabbau (20p)
+        Portierung auf Android
+            Steuerung über Touch.  (20p)        
+        Fliegen im Orbit um den/die Planeten. D.H. Gravitation des Planeten soll Einfluss auf den Schub haben (10p)
