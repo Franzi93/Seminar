@@ -7,54 +7,41 @@ using System.Collections.Generic;
 
 public class PlayerMovement: MonoBehaviour
 {
-	public float maxGeschwindigkeit = 1f;
-	public float minGeschwindigkeit = 0.0000001f;
-	public float rotationGeschwindigkeit = 100f;
-	public float mausGeschwindigkeit = 0.1f;
+	public float speed = 1;
+	public float maxspeed = 5;
+	public Vector3 target;
+	public Vector3 start;
+	private Vector3 pos;
+	public int turn = 10;
 	public bool status = false;
-	
-	public float momentaneGeschwindigkeit = 0.001f;
+
 	
 	void Start(){
+		start = transform.position;
+		pos = transform.position;
 	}
 	
-	void LateUpdate()
+	void FixedUpdate()
 	{
-		//Staus == Pause, Start
+		//Status - false, wenn rennen (noch) nicht läuft
 		if (status){
-			//Rotation manager
-			if (Input.GetKey(KeyCode.A))
-				transform.Rotate(0, 0, Time.deltaTime * rotationGeschwindigkeit);
-			else if (Input.GetKey(KeyCode.D))
-				transform.Rotate(0, 0, -Time.deltaTime * rotationGeschwindigkeit);
-			
-			//Beschleunigen
-			if (Input.GetKey(KeyCode.W)){
-				
-				while(Input.GetKey(KeyCode.W) && maxGeschwindigkeit >= momentaneGeschwindigkeit){
-					
-					momentaneGeschwindigkeit = momentaneGeschwindigkeit + 0.001F;
-				}
-				
 
-			}//Abbremmsen
-			else if (Input.GetKey(KeyCode.S)){
-				
-				while(Input.GetKey(KeyCode.S) && minGeschwindigkeit <= momentaneGeschwindigkeit){
-					
-					momentaneGeschwindigkeit = momentaneGeschwindigkeit* -0.0001F;
-				}
-				
-
-			}//Gesch. halten
-			else{
-				momentaneGeschwindigkeit = momentaneGeschwindigkeit ;
-
+			if(Input.GetKey(KeyCode.W) && speed <= maxspeed )
+			{
+				speed = speed +0.1f;
 			}
+			if(Input.GetKey(KeyCode.S) && speed > 0)
+			{
+				speed = speed -.05f;
+			}
+
+				pos = Input.mousePosition;
+				pos.z = 45;
+				pos = Camera.main.ScreenToWorldPoint(pos);
 			
-			Vector3 MausBewegung= (Input.mousePosition - (new Vector3(Screen.width, Screen.height, 0) / 2.0f)) * mausGeschwindigkeit;
-			transform.Rotate(new Vector3(-MausBewegung.y, MausBewegung.x, -MausBewegung.x) * 0.025f);
-			transform.Translate(Vector3.forward * Time.deltaTime * momentaneGeschwindigkeit);
+			transform.position = Vector3.Lerp(transform.position, pos, speed*Time.deltaTime);
+			transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * speed * Time.deltaTime);
+			transform.Rotate(Vector3.up * turn * Input.GetAxis("Horizontal") * Time.deltaTime);
 		}
 	}
 	

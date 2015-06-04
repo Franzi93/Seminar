@@ -49,6 +49,7 @@
      <Compile Include="Assets\Skript\Kamera.cs" />
      <Compile Include="Assets\Skript\PlayerMovement.cs" />
      <Compile Include="Assets\Skript\SpielerBewegung.cs" />
+     <Compile Include="Assets\enemynav.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
