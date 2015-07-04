@@ -41,30 +41,22 @@ function Update ()
 	}
 }
 
+// Beobachtung!
 function lookAt ()
 {
-	GetComponent.<Renderer>().material.color = Color.yellow;
-	var rotation = Quaternion.LookRotation(Target.position - transform.position);
-	transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * Damping);
+	GetComponent.<Renderer>().material.color = Color.yellow; // gelbes Einfärben
+	var rotation = Quaternion.LookRotation(Target.position - transform.position); // Ermittlung der Rotation zum Spieler
+	transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * Damping); // Rotation!
 }
 
+// Verfolgung!
 function chase ()
 {
-	GetComponent.<Renderer>().material.color = Color.red;
+	GetComponent.<Renderer>().material.color = Color.red; //rotes Einfärben
 	
-	moveDirection = transform.forward;
-	moveDirection *= moveSpeed;
+	moveDirection = transform.forward; // Ermittelter Vektor zum Verfolgen des Spielers
+	moveDirection *= moveSpeed; // Vergrößern der Vektorlänge für höhren Speed
 	
-	moveDirection.y -= gravity * Time.deltaTime;
+	// Ausführen der Bewegung mittels ermitteltem Vektor!
 	controller.Move(moveDirection * Time.deltaTime);
-}
-
-
-
-
-function ApplyDammage ()
-{
-	chaseRange += 30;
-	moveSpeed += 2;
-	lookAtDistance += 40;
 }

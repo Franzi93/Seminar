@@ -22,7 +22,7 @@ public class SpielerBewegung : MonoBehaviour
 	void LateUpdate()
 	{
 		//Staus == Pause, Start
-		if (status){
+		//if (status){
 			//Rotation manager
 			if (Input.GetKey(KeyCode.A))
 				transform.Rotate(0, 0, Time.deltaTime * rotationGeschwindigkeit);
@@ -37,7 +37,7 @@ public class SpielerBewegung : MonoBehaviour
 					momentaneGeschwindigkeit = momentaneGeschwindigkeit + 0.01F;
 				}
 				
-				MaxTurbines(momentaneGeschwindigkeit*0.01F );
+				MaxTurbines(momentaneGeschwindigkeit * 0.01F );
 			}//Abbremmsen
 			else if (Input.GetKey(KeyCode.S)){
 				
@@ -49,14 +49,14 @@ public class SpielerBewegung : MonoBehaviour
 				MaxTurbines(momentaneGeschwindigkeit*0.01F );
 			}//Gesch. halten
 			else{
-				momentaneGeschwindigkeit = momentaneGeschwindigkeit ;
-				MaxTurbines(momentaneGeschwindigkeit *0.01F );
+				momentaneGeschwindigkeit = 0.01F ;
+				MaxTurbines(momentaneGeschwindigkeit * 0.01F );
 			}
 			
-			Vector3 MausBewegung= (Input.mousePosition - (new Vector3(Screen.width, Screen.height, 0) / 2.0f)) * 1;
+			Vector3 MausBewegung= (Input.mousePosition - (new Vector3(Screen.width, Screen.height, 0) / 2.0f)) * 0.6f;
 			transform.Rotate(new Vector3(-MausBewegung.y, MausBewegung.x, -MausBewegung.x) * 0.025f);
 			transform.Translate(Vector3.forward * Time.deltaTime * momentaneGeschwindigkeit);
-		}
+		//}
 	}
 	
 	void MaxTurbines(float intensity){

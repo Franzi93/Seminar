@@ -9,7 +9,7 @@ public class Kamera : MonoBehaviour {
 	private Transform _target;
 	private GameObject _player;
 	private Vector3 _wantedPosition;
-	private bool FirstPersonStatus = false;
+	private bool _FirstPersonStatus = false;
 	
 	public float distance = 50.0f;
 	public float height = 3.0f;
@@ -18,36 +18,36 @@ public class Kamera : MonoBehaviour {
 	
 	void Start(){
 		_player = GameObject.FindGameObjectWithTag("Player");
-		_target=_player.transform;
+		_target= _player.transform;
 	}
 	
 	void Update () {
 
-		if (Input.GetKey (KeyCode.C) && !FirstPersonStatus) {
+		if (Input.GetKey (KeyCode.C) && !_FirstPersonStatus) {
 
 			ray = Camera.main.ScreenPointToRay(mousePos);
-			FirstPersonStatus = true;
+			_FirstPersonStatus = true;
 
-		} else if (Input.GetKey (KeyCode.C) && FirstPersonStatus) {
+		} else if (Input.GetKey (KeyCode.C) && _FirstPersonStatus) {
 
-			FirstPersonStatus = false;
+			_FirstPersonStatus = false;
 		}
 
 	}
 	
 	void LateUpdate(){
 
-		if (!FirstPersonStatus) {
+		//if (!_FirstPersonStatus) {
 
-			SmoothFollow();
-			GameObject.FindGameObjectWithTag("FirstPersonCam").GetComponent<Camera>().enabled = false;
-			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().enabled = true;
+		//	SmoothFollow();
+		//	GameObject.FindGameObjectWithTag("FirstPersonCam").GetComponent<Camera>().enabled = false;
+		//	GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().enabled = true;
 
-		} else {
+		//} else {
 
-			GameObject.FindGameObjectWithTag("FirstPersonCam").GetComponent<Camera>().enabled = true;
-			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().enabled = false;
-		}
+		//	GameObject.FindGameObjectWithTag("FirstPersonCam").GetComponent<Camera>().enabled = true;
+		//	GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().enabled = false;
+		//}
 	}
 
 
