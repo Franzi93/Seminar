@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Skript\Kamera.cs" />
+     <Compile Include="Assets\Skript\Shoot.cs" />
      <Compile Include="Assets\Skript\SpielerBewegung.cs" />
      <Compile Include="Assets\enemynav.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />

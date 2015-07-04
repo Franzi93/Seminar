@@ -9,6 +9,7 @@ public class SpielerBewegung : MonoBehaviour
 {
 	public float maxGeschwindigkeit = 99f;
 	public float minGeschwindigkeit = 1f;
+	public float force = 0f;
 	public float rotationGeschwindigkeit = 100f;
 	public bool status = false;
 	
@@ -30,39 +31,61 @@ public class SpielerBewegung : MonoBehaviour
 				transform.Rotate(0, 0, -Time.deltaTime * rotationGeschwindigkeit);
 			
 			//Beschleunigen
-			if (Input.GetKey(KeyCode.W)){
+			if (Input.GetKey(KeyCode.W))
+			{
 				
-				while(Input.GetKey(KeyCode.W) && maxGeschwindigkeit >= momentaneGeschwindigkeit){
+				while(Input.GetKey(KeyCode.W) 
+			      && maxGeschwindigkeit >= momentaneGeschwindigkeit)
+				{
 
-					momentaneGeschwindigkeit = momentaneGeschwindigkeit + 0.01F;
+					momentaneGeschwindigkeit = momentaneGeschwindigkeit + 0.001f;
 				}
 				
-				MaxTurbines(momentaneGeschwindigkeit * 0.01F );
 			}//Abbremmsen
-			else if (Input.GetKey(KeyCode.S)){
+			else if (Input.GetKey(KeyCode.S))
+			{
 				
-				while(Input.GetKey(KeyCode.S) && minGeschwindigkeit <= momentaneGeschwindigkeit){
+				while(Input.GetKey(KeyCode.S) 
+			      && minGeschwindigkeit <= momentaneGeschwindigkeit)
+				{
 
-					momentaneGeschwindigkeit = momentaneGeschwindigkeit* -0.01F;
+					momentaneGeschwindigkeit = momentaneGeschwindigkeit * -0.1f;
 				}
 				
-				MaxTurbines(momentaneGeschwindigkeit*0.01F );
-			}//Gesch. halten
-			else{
-				momentaneGeschwindigkeit = 0.01F ;
-				MaxTurbines(momentaneGeschwindigkeit * 0.01F );
+
+			}//Verlangsamen
+			else
+			{
+
+				while(minGeschwindigkeit < momentaneGeschwindigkeit)
+				{
+					momentaneGeschwindigkeit = momentaneGeschwindigkeit - 0.001f;
+				}
+				
 			}
-			
-			Vector3 MausBewegung= (Input.mousePosition - (new Vector3(Screen.width, Screen.height, 0) / 2.0f)) * 0.6f;
+
+
+			MaxTurbines(momentaneGeschwindigkeit);
+
+			Vector3 MausBewegung = (Input.mousePosition - (new Vector3(Screen.width/ 2.0f, Screen.height/ 2.0f, 0) )) * 0.3f;
 			transform.Rotate(new Vector3(-MausBewegung.y, MausBewegung.x, -MausBewegung.x) * 0.025f);
-			transform.Translate(Vector3.forward * Time.deltaTime * momentaneGeschwindigkeit);
+
+			Rigidbody r = GetComponent<Rigidbody>();
+			
+			if (r != null) {
+				r.AddForce (transform.forward * momentaneGeschwindigkeit, ForceMode.Impulse);
+			}	
+			
+			//transform.Translate(Vector3.forward * Time.deltaTime * momentaneGeschwindigkeit);
+
 		//}
 	}
 	
 	void MaxTurbines(float intensity){
+
 		foreach (GameObject turbine in turbines)
 		{
-			turbine.GetComponent<LensFlare>().brightness = intensity;
+			turbine.GetComponent<LensFlare>().brightness = intensity * 0.002f;
 		}
 	}
 	
