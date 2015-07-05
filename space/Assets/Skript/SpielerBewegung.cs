@@ -9,7 +9,6 @@ public class SpielerBewegung : MonoBehaviour
 {
 	public float maxGeschwindigkeit = 99f;
 	public float minGeschwindigkeit = 1f;
-	public float force = 0f;
 	public float rotationGeschwindigkeit = 100f;
 	public bool status = false;
 	
@@ -49,7 +48,7 @@ public class SpielerBewegung : MonoBehaviour
 			      && minGeschwindigkeit <= momentaneGeschwindigkeit)
 				{
 
-					momentaneGeschwindigkeit = momentaneGeschwindigkeit * -0.1f;
+					momentaneGeschwindigkeit = momentaneGeschwindigkeit * -1f;
 				}
 				
 
@@ -65,18 +64,13 @@ public class SpielerBewegung : MonoBehaviour
 			}
 
 
-			MaxTurbines(momentaneGeschwindigkeit);
+			MaxTurbines(momentaneGeschwindigkeit * 0.002f);
 
 			Vector3 MausBewegung = (Input.mousePosition - (new Vector3(Screen.width/ 2.0f, Screen.height/ 2.0f, 0) )) * 0.3f;
 			transform.Rotate(new Vector3(-MausBewegung.y, MausBewegung.x, -MausBewegung.x) * 0.025f);
 
 			Rigidbody r = GetComponent<Rigidbody>();
-			
-			if (r != null) {
-				r.AddForce (transform.forward * momentaneGeschwindigkeit, ForceMode.Impulse);
-			}	
-			
-			//transform.Translate(Vector3.forward * Time.deltaTime * momentaneGeschwindigkeit);
+			if (r != null) {r.AddForce (transform.forward * momentaneGeschwindigkeit, ForceMode.Impulse);}	
 
 		//}
 	}
@@ -85,7 +79,9 @@ public class SpielerBewegung : MonoBehaviour
 
 		foreach (GameObject turbine in turbines)
 		{
-			turbine.GetComponent<LensFlare>().brightness = intensity * 0.002f;
+			//Debug.Log("Hello");
+			if(intensity > 0.3f){intensity = 0.3f;}
+			turbine.GetComponent<LensFlare>().brightness = intensity;
 		}
 	}
 	
