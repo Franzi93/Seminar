@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Skript\SpielerBewegung.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Skript\LevelSelect.cs">
     <Files>
       <File FileName="Assets\Skript\SpielerBewegung.cs" Line="66" Column="3" />
-      <File FileName="Assets\Skript\Kamera.cs" Line="26" Column="76" />
-      <File FileName="Assets\Skript\Shoot.cs" Line="16" Column="3" />
+      <File FileName="Assets\Skript\Kamera.cs" Line="25" Column="3" />
+      <File FileName="Assets\Skript\Shoot.cs" Line="1" Column="1" />
+      <File FileName="Assets\Skript\LevelSelect.cs" Line="17" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
