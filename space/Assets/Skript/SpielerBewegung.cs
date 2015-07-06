@@ -7,12 +7,12 @@ using System.Collections.Generic;
 
 public class SpielerBewegung : MonoBehaviour
 {
-	public float maxGeschwindigkeit = 99f;
-	public float minGeschwindigkeit = 1f;
-	public float rotationGeschwindigkeit = 100f;
+	public float maxBeschleunigung = 99f;
+	public float minBeschleunigung = 1f;
+	public float rotationBeschleunigung = 100f;
 	public bool status = false;
 	
-	public float momentaneGeschwindigkeit = 1f;
+	public float momentaneBeschleunigung = 1f;
 	private GameObject[] turbines;
 	
 	void Start(){
@@ -25,19 +25,19 @@ public class SpielerBewegung : MonoBehaviour
 		//if (status){
 			//Rotation manager
 			if (Input.GetKey(KeyCode.A))
-				transform.Rotate(0, 0, Time.deltaTime * rotationGeschwindigkeit);
+				transform.Rotate(0, 0, Time.deltaTime * rotationBeschleunigung);
 			else if (Input.GetKey(KeyCode.D))
-				transform.Rotate(0, 0, -Time.deltaTime * rotationGeschwindigkeit);
+				transform.Rotate(0, 0, -Time.deltaTime * rotationBeschleunigung);
 			
 			//Beschleunigen
 			if (Input.GetKey(KeyCode.W))
 			{
 				
 				while(Input.GetKey(KeyCode.W) 
-			      && maxGeschwindigkeit >= momentaneGeschwindigkeit)
+			      && maxBeschleunigung >= momentaneBeschleunigung)
 				{
 
-					momentaneGeschwindigkeit = momentaneGeschwindigkeit + 0.001f;
+					momentaneBeschleunigung = momentaneBeschleunigung + 0.001f;
 				}
 				
 			}//Abbremmsen
@@ -45,10 +45,10 @@ public class SpielerBewegung : MonoBehaviour
 			{
 				
 				while(Input.GetKey(KeyCode.S) 
-			      && minGeschwindigkeit <= momentaneGeschwindigkeit)
+			      && minBeschleunigung <= momentaneBeschleunigung)
 				{
 
-					momentaneGeschwindigkeit = momentaneGeschwindigkeit * -1f;
+					momentaneBeschleunigung = momentaneBeschleunigung * -1f;
 				}
 				
 
@@ -56,21 +56,21 @@ public class SpielerBewegung : MonoBehaviour
 			else
 			{
 
-				while(minGeschwindigkeit < momentaneGeschwindigkeit)
+				while(minBeschleunigung < momentaneBeschleunigung)
 				{
-					momentaneGeschwindigkeit = momentaneGeschwindigkeit - 0.001f;
+					momentaneBeschleunigung = momentaneBeschleunigung - 0.001f;
 				}
 				
 			}
 
 
-			MaxTurbines(momentaneGeschwindigkeit * 0.002f);
+			MaxTurbines(momentaneBeschleunigung * 0.002f);
 
 			Vector3 MausBewegung = (Input.mousePosition - (new Vector3(Screen.width/ 2.0f, Screen.height/ 2.0f, 0) )) * 0.3f;
 			transform.Rotate(new Vector3(-MausBewegung.y, MausBewegung.x, -MausBewegung.x) * 0.025f);
 
 			Rigidbody r = GetComponent<Rigidbody>();
-			if (r != null) {r.AddForce (transform.forward * momentaneGeschwindigkeit, ForceMode.Impulse);}	
+			if (r != null) {r.AddForce (transform.forward * momentaneBeschleunigung, ForceMode.Impulse);}	
 
 		//}
 	}
