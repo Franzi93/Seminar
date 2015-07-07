@@ -10,20 +10,24 @@ public class Kamera : MonoBehaviour {
 	}
 	
 	void Update () {
-
-		if (Input.GetKey(KeyCode.C) && !_FirstPersonStatus) {
-			_FirstPersonStatus = true;
-
-		} else if (Input.GetKey(KeyCode.C) && _FirstPersonStatus) {
-
-			_FirstPersonStatus = false;
+		if (Input.anyKeyDown) {
+			if (Input.GetKey (KeyCode.C) && !_FirstPersonStatus) {
+				_FirstPersonStatus = true;
+				
+			} else if (Input.GetKey (KeyCode.C) && _FirstPersonStatus) {
+				
+				_FirstPersonStatus = false;
+			}
 		}
 
 	}
+
 	
 	void LateUpdate(){
+
 		GameObject go_FirstPersCam = GameObject.FindGameObjectWithTag("FirstPersCam");
 		GameObject go_ThirdPesCam = GameObject.FindGameObjectWithTag("ThirdPesCam");
+
 		if (!_FirstPersonStatus) {
 
 			//SmoothFollow();

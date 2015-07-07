@@ -17,6 +17,9 @@ public class WayPointControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		//Debug.Log("TEST");
+		//Debug.LogFormat("Time.deltaTime:  {0} ", Time.deltaTime);
+
 
 		int naechsterWegpunktIndex = _zuletztMarkierterWegpunkt_index + 1;
 
@@ -36,10 +39,14 @@ public class WayPointControl : MonoBehaviour {
 		} // .. foreach (GameObject go_wp in _waypoints)
 
 
-		if(_alleWegpunktePassiert && Time.deltaTime > 30f)
+		if(_alleWegpunktePassiert)
 		{
 
-			Application.LoadLevel(0);
+			//if(Time.deltaTime > 4f)
+			{
+
+				Application.LoadLevel(0);
+			}
 		}
 	}// .. void Update () 
 }
