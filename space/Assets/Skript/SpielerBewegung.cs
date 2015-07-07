@@ -7,10 +7,10 @@ using System.Collections.Generic;
 
 public class SpielerBewegung : MonoBehaviour
 {
-	public float maxBeschleunigung = 99f;
-	public float minBeschleunigung = 1f;
-	public float rotationBeschleunigung = 100f;
-	public bool status = false;
+	public float maxBeschleunigung;
+	public float minBeschleunigung;
+	public float rotationBeschleunigung;
+	public bool status = true;
 	
 	public float momentaneBeschleunigung = 1f;
 	private GameObject[] turbines;
@@ -22,7 +22,7 @@ public class SpielerBewegung : MonoBehaviour
 	void LateUpdate()
 	{
 		//Staus == Pause, Start
-		//if (status){
+		if (status){
 			//Rotation manager
 			if (Input.GetKey(KeyCode.A))
 				transform.Rotate(0, 0, Time.deltaTime * rotationBeschleunigung);
@@ -72,7 +72,7 @@ public class SpielerBewegung : MonoBehaviour
 			Rigidbody r = GetComponent<Rigidbody>();
 			if (r != null) {r.AddForce (transform.forward * momentaneBeschleunigung, ForceMode.Impulse);}	
 
-		//}
+		}
 	}
 	
 	void MaxTurbines(float intensity){

@@ -17,7 +17,6 @@ public class Waypoint : MonoBehaviour {
 		if (_istDerNaechsteWp) 
 		{
 			_istPassiert = true;
-
 			GetComponent<AudioSource>().Play();
 
 			WayPointControl go_Wcontroler = GameObject.FindGameObjectWithTag("WaypointControler").GetComponent<WayPointControl>();
