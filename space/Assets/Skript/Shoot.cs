@@ -6,10 +6,11 @@ public class Shoot : MonoBehaviour {
 	public GameObject bulletPrefab;
 	public float force = 800.0f;
 	public float projectileLifeTime = 10f;
-	public bool status = true;
+	public bool status;
+
 	// Use this for initialization
 	void Start () {
-	
+		status = true;
 	}
 	
 	// Update is called once per frame
