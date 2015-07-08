@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WayPointControl : MonoBehaviour {
 
-	private GameObject[] _waypoints;
+	public GameObject[] _waypoints;
 	public int _zuletztMarkierterWegpunkt_index;
 	public bool _alleWegpunktePassiert;
 
@@ -26,10 +26,15 @@ public class WayPointControl : MonoBehaviour {
 		foreach (GameObject go_wp in _waypoints)
 		{
 			Waypoint wp = go_wp.GetComponent<Waypoint>();
-
+			wp._istDerResetWp = false;
 			if(naechsterWegpunktIndex == go_wp.GetComponent<Waypoint>()._nummer)
 			{
 				wp._istDerNaechsteWp = true;
+			}
+
+			if(_zuletztMarkierterWegpunkt_index == go_wp.GetComponent<Waypoint>()._nummer)
+			{
+				wp._istDerResetWp = true;
 			}
 
 			if(wp._istZiel && wp._istPassiert)

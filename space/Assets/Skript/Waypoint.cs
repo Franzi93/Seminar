@@ -6,6 +6,7 @@ public class Waypoint : MonoBehaviour {
 	public int _nummer;
 	public bool _istPassiert = false;
 	public bool _istDerNaechsteWp = false;
+	public bool _istDerResetWp = false;
 	public bool _istZiel = false;
 	
 	void Start() {
