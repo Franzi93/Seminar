@@ -21,8 +21,8 @@ public class Kamera : MonoBehaviour {
 		}
 
 	}
-
 	
+
 	void LateUpdate(){
 
 		GameObject go_FirstPersCam = GameObject.FindGameObjectWithTag("FirstPersCam");
