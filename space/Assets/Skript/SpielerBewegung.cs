@@ -2,10 +2,11 @@
  * Bewegung des spielers per Maus und Tastatur
  */
 using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 
-public class SpielerBewegung : MonoBehaviour
+public class SpielerBewegung : NetworkBehaviour
 {
 	public float maxBeschleunigung;
 	public float minBeschleunigung;
@@ -20,8 +21,9 @@ public class SpielerBewegung : MonoBehaviour
 		status = true;
 	}
 	
-	void LateUpdate()
+	void FixedUpdate()
 	{
+
 		//Staus == Pause, Start
 		if (status){
 
@@ -74,7 +76,7 @@ public class SpielerBewegung : MonoBehaviour
 			Rigidbody r = GetComponent<Rigidbody>();
 			if (r != null) {r.AddForce (transform.forward * momentaneBeschleunigung, ForceMode.Impulse);}	
 
-		} // .. if (status){
+		} 
 	}
 	
 	void MaxTurbines(float intensity){

@@ -16,13 +16,17 @@ public class Shoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Debug.Log("Hello");
+
+
+
+
+
 		if (status) {
 
 			if (Input.GetMouseButtonDown (0)) {
 				//Debug.Log ("SCHUSS!!!");
 
-				bulletPrefab = GameObject.FindGameObjectsWithTag ("SchussLaser") [0];
-				GameObject go = GameObject.Instantiate (bulletPrefab, transform.position + transform.forward * 5, Quaternion.identity) as GameObject;
+				GameObject go = (GameObject) Instantiate(bulletPrefab, transform.position + transform.forward * 5, Quaternion.identity) ;
 
 				if (go != null) {
 					//only happens if cast succeeded
@@ -40,12 +44,7 @@ public class Shoot : MonoBehaviour {
 					
 					Destroy (go, projectileLifeTime);
 				}
-			} else {
-				GameObject GO_Spieler = GameObject.FindGameObjectsWithTag ("Player") [0];
-				if (GO_Spieler != null) {
-					transform.position = GO_Spieler.transform.position;
-					transform.rotation = GO_Spieler.transform.rotation;
-				}
+			
 			}
 
 		} // -- if (status) {

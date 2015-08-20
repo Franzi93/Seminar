@@ -1,13 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Skript\InGameMenu.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Skript\Kamera.cs">
     <Files>
-      <File FileName="Assets\Skript\InGameMenu.cs" Line="40" Column="2" />
+      <File FileName="Assets\Skript\Kamera.cs" Line="22" Column="41" />
+      <File FileName="Assets\Skript\InGameMenu.cs" Line="1" Column="1" />
       <File FileName="Assets\Skript\WayPointControl.cs" Line="1" Column="1" />
       <File FileName="Assets\Skript\HealthControl.cs" Line="1" Column="1" />
       <File FileName="Assets\Skript\Shoot.cs" Line="1" Column="1" />
       <File FileName="Assets\Skript\Waypoint.cs" Line="1" Column="1" />
-      <File FileName="Assets\Skript\Kamera.cs" Line="1" Column="1" />
       <File FileName="Assets\Skript\GUIControl.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
